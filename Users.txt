@@ -1,0 +1,158 @@
+mysql -root -p
+
+USE aceTraining;
+CREATE USER 'Student'@'localhost';
+
+GRANT
+SELECT (StudentID, forename, Surname, AddressLine1, AddressLine2, TownCity, Postcode, PhoneNumber, EmailAddress, PaymentOption, FeesPaid),
+UPDATE (forename, Surname, AddressLine1, AddressLine2, TownCity, Postcode, PhoneNumber, EmailAddress)
+ON aceTraining.tblStudent TO 'Student'@'localhost';
+
+GRANT
+SELECT (CourseCode, cost, description, CourseName),
+ON aceTraining.tblCourse TO 'Student'@'localhost';
+
+GRANT
+SELECT (TutorID, StudentID, Resource type),
+ON aceTraining.tblResource TO 'Student'@'localhost';
+
+GRANT
+SELECT (QuizID, CourseCode, QuizName),
+ON aceTraining.tblQuiz TO 'Student'@'localhost';
+
+GRANT
+SELECT (StudentID, ProgressPercent),
+ON aceTraining.tblProgressBar TO 'Student'@'localhost';
+
+GRANT
+SELECT (Forename, Surname),
+ON aceTraining.tblTutor TO 'Student'@'localhost';
+
+GRANT
+SELECT (StudentID, CourseCode, Status, EnrolmentType),
+ON aceTraining.tblEnrolment TO 'Student'@'localhost';
+
+GRANT
+SELECT (StudentID, CourseCode, Score),
+ON aceTraining.tblQuizScore TO 'Student'@'localhost';
+
+
+CREATE USER 'Tutor'@'localhost';
+
+GRANT
+SELECT (TutorID, forename, Surname, AddressLine1, AddressLine2, TownCity, Postcode, PhoneNumber, EmailAddress),
+UPDATE (forename, Surname, AddressLine1, AddressLine2, TownCity, Postcode, PhoneNumber, EmailAddress)
+ON aceTraining.tblTutor TO 'Tutor'@'localhost';
+
+GRANT
+INSERT,SELECT (TutorID, StudentID, Resource type),
+UPDATE (Resource type)
+ON aceTraining.tblResource TO 'Tutor'@'localhost';
+
+GRANT
+INSERT,SELECT (QuizID, CourseCode, QuizName),
+UPDATE (QuizName)
+ON aceTraining.tblQuiz TO 'Tutor'@'localhost';
+
+GRANT
+INSERT,SELECT (StudentID, CourseCode, Score),
+UPDATE (Score)
+ON aceTraining.tblQuizScore TO 'Tutor'@'localhost';
+
+GRANT
+INSERT,SELECT (StudentID, ProgressPercent),
+UPDATE (ProgressPercent)
+ON aceTraining.tblProgressBar TO 'Tutor'@'localhost';
+
+GRANT
+INSERT,SELECT (CourseCode, cost, description, CourseName),
+UPDATE (Description, CourseName)
+ON aceTraining.tblCourse TO 'Tutor'@'localhost';
+
+GRANT
+INSERT, SELECT, DELETE (StudentID, forename, Surname, AddressLine1, AddressLine2, TownCity, Postcode, PhoneNumber, EmailAddress, PaymentOption, FeesPaid),
+UPDATE (forename, Surname, AddressLine1, AddressLine2, TownCity, Postcode, PhoneNumber, EmailAddress, PaymentOption, FeesPaid)
+ON aceTraining.tblStudent TO 'Student'@'localhost';
+
+CREATE USER 'Admin'@'localhost';
+
+GRANT
+INSERT, SELECT, DELETE (StudentID, forename, Surname, AddressLine1, AddressLine2, TownCity, Postcode, PhoneNumber, EmailAddress, PaymentOption, FeesPaid),
+UPDATE (forename, Surname, AddressLine1, AddressLine2, TownCity, Postcode, PhoneNumber, EmailAddress, PaymentOption, FeesPaid)
+ON aceTraining.tblStudent TO 'Admin'@'localhost';
+
+GRANT
+INSET, SELECT, DELETE (TutorID, forename, Surname, AddressLine1, AddressLine2, TownCity, Postcode, PhoneNumber, EmailAddress),
+UPDATE (forename, Surname, AddressLine1, AddressLine2, TownCity, Postcode, PhoneNumber, EmailAddress)
+ON aceTraining.tblTutor TO 'Admin'@'localhost';
+
+GRANT
+INSERT,SELECT, DELETE (TutorID, StudentID, Resource type),
+UPDATE (Resource type)
+ON aceTraining.tblResource TO 'Admin'@'localhost';
+
+GRANT
+INSERT,SELECT, DELETE(QuizID, CourseCode, QuizName),
+UPDATE (QuizName)
+ON aceTraining.tblQuiz TO 'Admin'@'localhost';
+
+GRANT
+INSERT,SELECT, DELETE (StudentID, CourseCode, Score),
+UPDATE (Score)
+ON aceTraining.tblQuizScore TO 'Admin'@'localhost';
+
+GRANT
+INSERT,SELECT, DELETE (StudentID, ProgressPercent),
+UPDATE (ProgressPercent)
+ON aceTraining.tblProgressBar TO 'Admin'@'localhost';
+
+GRANT
+INSERT,SELECT, DELETE (CourseCode, cost, description, CourseName),
+UPDATE (cost, Description, CourseName)
+ON aceTraining.tblCourse TO 'Admin'@'localhost';
+
+GRANT
+INSERT,SELECT, DELETE (EmailAddress, forename, Surname, AddressLine1, AddressLine2, TownCity, Postcode, PhoneNumber ),
+UPDATE (EmailAddress, forename, Surname, AddressLine1, AddressLine2, TownCity, Postcode, PhoneNumber)
+ON aceTraining.tblNextOfKin TO 'Admin'@'localhost';
+
+
+GRANT
+INSERT,SELECT, DELETE (QuestionID, CorrectAnswerID, CorrectAnswer),
+UPDATE (CorrectAnswer)
+ON aceTraining.tblCorrectAnswer TO 'Admin'@'localhost';
+
+GRANT
+INSERT,SELECT, DELETE (QuestionID, IncorrectAnswerID, IncorrectAnswer),
+UPDATE (IncorrectAnswer)
+ON aceTraining.tblIncorrectAnswer TO 'Admin'@'localhost';
+
+GRANT
+INSERT,SELECT, DELETE (QuestionID),
+ON aceTraining.tblIncorrectAnswer TO 'Admin'@'localhost';
+
+
+GRANT
+INSET, SELECT, DELETE (AdminID, forename, Surname, AddressLine1, AddressLine2, TownCity, Postcode, PhoneNumber, EmailAddress),
+UPDATE (forename, Surname, AddressLine1, AddressLine2, TownCity, Postcode, PhoneNumber, EmailAddress)
+ON aceTraining.tblAdmin TO 'Admin'@'localhost';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
